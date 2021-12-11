@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class Size {
   double? _screenHeight;
   double? _screenWidth;
-  static const double modelHeight = 926;
+  static const double modelHeight = 800;
   static const double modelWidth = 428;
   final BuildContext _context;
   final BoxConstraints _constrain;
