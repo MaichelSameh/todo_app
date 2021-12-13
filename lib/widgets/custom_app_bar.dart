@@ -3,18 +3,21 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../config/path.dart';
 import '../models/size.dart';
+import '../screens/done_tasks_screen.dart';
 
 class CustomAppBar extends StatelessWidget {
   final double? menuWidth;
   final int struckNumber;
   final String title;
   final bool goBack;
+  final bool showMenu;
   const CustomAppBar({
     Key? key,
     this.menuWidth,
     this.struckNumber = 2,
     required this.title,
     this.goBack = false,
+    this.showMenu = true,
   }) : super(key: key);
 
   List<Widget> generateStruck(Size _size) {
@@ -51,11 +54,18 @@ class CustomAppBar extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SizedBox(
-              width: _size.width(23),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: generateStruck(_size),
+            GestureDetector(
+              onTap: () {
+                Navigator.of(context).pushNamed(DoneTasksScreen.route_name);
+              },
+              child: Padding(
+                padding: EdgeInsets.all(_size.width(5)),
+                child: showMenu
+                    ? Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: generateStruck(_size),
+                      )
+                    : null,
               ),
             ),
             Text(
@@ -66,13 +76,20 @@ class CustomAppBar extends StatelessWidget {
                 fontWeight: FontWeight.w600,
               ),
             ),
-            SizedBox(
-              width: _size.width(23),
-              child: goBack
-                  ? SvgPicture.asset(
-                      MyPath.icons_path + "back_icon" + MyPath.icons_extension,
-                    )
-                  : null,
+            GestureDetector(
+              onTap: () {
+                Navigator.of(context).pop();
+              },
+              child: Padding(
+                padding: EdgeInsets.all(_size.width(5)),
+                child: goBack
+                    ? SvgPicture.asset(
+                        MyPath.icons_path +
+                            "back_icon" +
+                            MyPath.icons_extension,
+                      )
+                    : null,
+              ),
             ),
           ],
         ),

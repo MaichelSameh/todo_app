@@ -9,4 +9,8 @@ class MyPalette {
     Color.fromRGBO(37, 77, 222, 1),
     Color.fromRGBO(0, 255, 255, 1),
   ];
+  static const List<Color> blue_gradient = [
+    Color.fromRGBO(0, 255, 255, 1),
+    Color.fromRGBO(37, 77, 222, 1),
+  ];
 }

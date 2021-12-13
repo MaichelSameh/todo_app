@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo/services/db_helper.dart';
 
 import 'screens/screens.dart';
 
@@ -11,13 +12,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    DBHelper().database();
     return MaterialApp(
       initialRoute: SplashScreen.route_name,
       routes: {
         SplashScreen.route_name: (_) =>
             const SplashScreen(key: Key(SplashScreen.route_name)),
-        AddNewTaskScreen.route_name: (_) =>
-            const AddNewTaskScreen(key: Key(AddNewTaskScreen.route_name)),
         CalendarScreen.route_name: (_) =>
             const CalendarScreen(key: Key(CalendarScreen.route_name)),
         DoneTasksScreen.route_name: (_) =>

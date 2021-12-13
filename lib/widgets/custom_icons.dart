@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../config/palette.dart';
 import '../config/path.dart';
 import '../models/size.dart';
 
@@ -16,6 +17,7 @@ enum CustomIconType {
   select,
   cancel,
   done,
+  menu,
 }
 
 enum CustomIconStatus { selected, done, none }
@@ -72,10 +74,7 @@ class CustomIcon extends StatelessWidget {
         iconName = "other_icon";
         break;
       case CustomIconType.add:
-        gradient = const [
-          Color.fromRGBO(0, 255, 255, 1),
-          Color.fromRGBO(37, 77, 222, 1),
-        ];
+        gradient = MyPalette.blue_gradient;
         radius = 23;
         iconName = "add_icon";
         break;
@@ -86,6 +85,14 @@ class CustomIcon extends StatelessWidget {
         ];
         radius = 28;
         iconName = "calendar_icon";
+        break;
+      case CustomIconType.menu:
+        gradient = const [
+          Color.fromRGBO(255, 255, 255, 1),
+          Color.fromRGBO(255, 255, 255, 1),
+        ];
+        radius = 28;
+        iconName = "menu_icon";
         break;
       case CustomIconType.select:
         gradient = const [
@@ -140,7 +147,7 @@ class CustomIcon extends StatelessWidget {
                 : const Color.fromRGBO(24, 23, 67, 0.3),
             offset: const Offset(0, 3),
             blurRadius: 6,
-            spreadRadius: 2,
+            spreadRadius: 1,
           ),
         ],
       ),
